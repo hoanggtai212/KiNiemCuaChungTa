@@ -213,6 +213,7 @@ let currentTopZ = 200;
 let typed = false;
 const flippingPages = new WeakSet();
 let currentPage = 0;
+let isBookFlipping=false;
 
 pages.forEach((page) => {
   let startX = 0;
@@ -224,18 +225,14 @@ let isFlippingForward = false;
 let isFlippingBackward = false;
   
 const flipForward = () => {
-
+  if(isBookFlipping)return;
   if (page !== pages[currentPage]) return;
 
   if (flippingPages.has(page)) return;
 
   if (!page.classList.contains('flipped')) {
 
-    flippingPages.add(page);
-
-    setTimeout(() => {
-      flippingPages.delete(page);
-    }, 1200);
+isBookFlipping=true;flippingPages.add(page);setTimeout(()=>{flippingPages.delete(page);isBookFlipping=false},1200);
 
     if (page === pages[pages.length - 2] && !typed) {
       const endText = document.getElementById('ending-text');
@@ -269,18 +266,14 @@ const flipForward = () => {
 };
 
 const flipBackward = () => {
-
+  if(isBookFlipping)return;
   if (page !== pages[currentPage - 1]) return;
 
   if (flippingPages.has(page)) return;
 
   if (page.classList.contains('flipped')) {
 
-    flippingPages.add(page);
-
-    setTimeout(() => {
-      flippingPages.delete(page);
-    }, 500);
+isBookFlipping=true;flippingPages.add(page);setTimeout(()=>{flippingPages.delete(page);isBookFlipping=false},1200);
 
     page.classList.add('fast');
     page.classList.remove('flipped');
