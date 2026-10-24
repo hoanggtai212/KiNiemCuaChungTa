@@ -1,21 +1,7 @@
 // 🔒 Chặn double tap zoom (mobile)
 let lastTouchEnd = 0;
 
-function preventDoubleTapZoom(container) {
-  container.addEventListener('touchend', function (event) {
-
-    // 🚨 Nếu đang bấm vào keypad thì KHÔNG chặn
-    if (event.target.closest('.keypad')) return;
-
-    const now = Date.now();
-    if (now - lastTouchEnd <= 300) {
-      event.preventDefault();
-    }
-    
-    lastTouchEnd = now;
-
-  }, { passive: false });
-}
+function preventDoubleTapZoom(container){if(container)container.style.touchAction="manipulation"}
 
 // 📖 Chặn zoom ở book
 const bookEl = document.getElementById("book");
