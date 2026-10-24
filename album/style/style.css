@@ -573,3 +573,11 @@ button {
 .page .front,.page .back{padding:clamp(8px,3vw,14px)}
 .caption{margin-top:clamp(8px,2.8vw,12px);font-size:clamp(13px,4vw,17px)}
 }
+
+/* 💗 TỐI ƯU HIỆU ỨNG LẬT SÁCH TRÊN ĐIỆN THOẠI */
+@media(max-width:600px){
+.book{filter:none}
+.page{will-change:auto;box-shadow:0 3px 8px rgba(0,0,0,.12),inset -8px 0 16px rgba(0,0,0,.04);transition:transform 1s cubic-bezier(.4,0,.2,1)}
+.page.fast{transition:transform 1s cubic-bezier(.4,0,.2,1)}
+.page .front img,.page .back img{box-shadow:none}
+}
